@@ -45,12 +45,13 @@ function Upcoming() {
             {
                atpTournaments.map((tourney, index)=>{
                 return(
-                    <Tournament key={index} start={tourney.start_date} end={tourney.end_date} city={tourney.city} country={tourney.country} surface={tourney.surface} name={tourney.name} url='https://www.atptour.com/en/tournaments/us-open/560/-/media/images/news/2021/09/13/07/28/us-open-tournament-page-2021.jpg'  />
+                    <Tournament key={index} start={tourney.start_date} end={tourney.end_date} city={tourney.city} country={tourney.country} surface={tourney.surface} name={tourney.name} url={tourney.surface.includes('Hard')?'https://longislandtennismagazine.com/sites/default/files/Tennis_Hard_Court_03_28_19.jpg':tourney.surface.includes('Clay')?'https://theracketlife.com/wp-content/uploads/2022/04/Can-You-Use-Hard-Court-Balls-On-Clay-Courts-00.jpg':tourney.surface.includes('Grass')?'https://photo-assets.wimbledon.com/images/pics/large/s_court_280616_666_fe.jpg':null}  />
                 )
             })
             
             }
         </div>
+        
     </div>
   )
 }

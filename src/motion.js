@@ -1,7 +1,7 @@
 export const slide=(from, duration, delay)=>({
     
         hidden:{
-            x: from === 'left' ? '-400%' : from === 'right' ? '100%' : 0,
+            x: from === 'left' ? '-100%' : from === 'right' ? '100%' : 0,
             opacity:0
         },
         show:{

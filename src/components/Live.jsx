@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Results from './Results'
 import {motion} from 'framer-motion'
+import FilterMatches from './FilterMatches';
 function Live({s}) {
   const [live, setLive]= useState([])
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '993374ba1fmsh65e6c12ee51854ap1cc3e9jsn506bb6462ab4',
+		'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
 		'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
 	}
 };
@@ -52,6 +53,7 @@ function Live({s}) {
             }
           }}
          className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >Live Matches</motion.h2> 
+         <FilterMatches/>
          <div className='flex gap-2 md:gap-6 overflow-x-scroll scrollbar-hide'>
          {live.map((match, index)=>{
             return(

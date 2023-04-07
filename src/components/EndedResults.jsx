@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import {motion} from 'framer-motion'
 
 function Results({firstP, secondP, gm, set1, set2, set3, points, sets, r1, r2, tournament,round, type}) {
     const [image, setImage]= useState("")
@@ -13,7 +14,13 @@ function Results({firstP, secondP, gm, set1, set2, set3, points, sets, r1, r2, t
   return (
     <>
     {gm===false?(
-         <div className='first:ml-[20px] relative bg-[#091327] md:w-[calc(100vw/4)] h-[200px] w-[80vw] flex flex-col gap-4 p-5 rounded-[20px] mt-[20px] justify-center flex-shrink-0'>
+         <motion.div 
+         initial={{opacity:0}}
+         animate={{opacity:1,
+        transition:{duration:2}
+        }}
+         exit={{opacity:0}}
+         className='first:ml-[20px] relative bg-[#091327] md:w-[calc(100vw/4)] h-[200px] w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0'>
             <div className='flex gap-2 ' >
                 <p className='text-[#20BF55] text-[12px]' >{tournament}</p>
                 <p className='text-[#20BF55] text-[12px]' >({type})</p>
@@ -21,7 +28,7 @@ function Results({firstP, secondP, gm, set1, set2, set3, points, sets, r1, r2, t
             <p className='text-[#20BF55] text-[14px]' >{round}</p>
             <div className='flex relative items-center w-full gap-5 md:gap-12'>
                 <div className='w-[60%] md:w-[50%] flex gap-2 items-center' >
-                    <p className={`font-bold text-[16px] ${set2 && set3 ? (set3.p1 < set3.p2 ? 'text-gray-400' : 'text-white') : (set2 && !set3 ? (set2.p1 < set2.p2 ? 'text-gray-400' : 'text-white'):'')} `}>{firstP}</p>
+                    <p className={`font-bold text-[16px] ${set2 && set3 ? (set3.p1 < set3.p2 ? 'text-gray-400' : 'text-white') : (set2 && !set3 ? (set2.p1 < set2.p2 ? 'text-gray-400' : 'text-white'):'text-white')} `}>{firstP}</p>
                     {r1?<p className='text-[#788AA3] text-[12px]' >({r1})</p>:null}
                 </div>
                 <div className='flex gap-4 items-center  w-[calc(40%-20px)]   md:w-[calc(40%-30px)] '>
@@ -36,7 +43,7 @@ function Results({firstP, secondP, gm, set1, set2, set3, points, sets, r1, r2, t
 
             <div className='flex items-center relative w-full gap-5  md:gap-12'>
                 <div className='w-[60%] md:w-[50%] flex gap-2 items-center' >
-                    <p className={`font-bold text-[16px]  ${set2 && set3 ? (set3.p2 < set3.p1 ? 'text-gray-400' : 'text-white') : (set2 && !set3 ? (set2.p2 < set2.p1 ? 'text-gray-400' : 'text-white') : '')} `} >{secondP}</p>
+                    <p className={`font-bold text-[16px]  ${set2 && set3 ? (set3.p2 < set3.p1 ? 'text-gray-400' : 'text-white') : (set2 && !set3 ? (set2.p2 < set2.p1 ? 'text-gray-400' : 'text-white') : 'text-white')} `} >{secondP}</p>
                     {r1?<p className='text-[#788AA3] text-[12px]' >({r2})</p>:null}
                 </div>
                 <div className='flex gap-4 items-center w-[calc(40%-20px)] md:w-[calc(40%-30px)]' >
@@ -48,7 +55,7 @@ function Results({firstP, secondP, gm, set1, set2, set3, points, sets, r1, r2, t
                 </div>
             </div>
  
-     </div>
+     </motion.div>
     ):(
         <div className='bg-[#091327] w-[300px] h-[150px] flex flex-col gap-4 p-5 rounded-[20px] m-[20px] justify-center'>
         <div className='flex relative items-center w-full justify-between'>

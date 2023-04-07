@@ -13,7 +13,7 @@ function Results({firstP, secondP, gm, set1, set2, set3, points, sets, r1, r2, t
   return (
     <>
     {gm===false?(
-         <div className='first:ml-[20px] relative bg-[#091327] md:w-[calc(100vw/4)] h-[200px]  w-[80vw] flex flex-col gap-4 p-5 rounded-[20px] mt-[20px] justify-center flex-shrink-0'>
+         <div className='first:ml-[20px] relative bg-[#091327] md:w-[calc(100vw/4)] h-[200px]  w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0'>
             <div className='flex gap-2' >
                 <p className='text-[#20BF55] text-[12px]' >{tournament}</p>
                 <p className='text-[#20BF55] text-[12px]' >({type})</p>

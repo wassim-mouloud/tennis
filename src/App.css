@@ -18,5 +18,40 @@ body{
     
 }
 
+.border-gradient{
+    background:linear-gradient(transparent, transparent ) padding-box,linear-gradient(to right, #2C3E50, #4CA1AF ) border-box;
+    border-width:3px;
+    border-style:solid;
+    border-color: transparent;
+    border-image-slice:1;
+    border-radius: 20px;
+}
+.border-gradient2{
+    background:linear-gradient(transparent, transparent ) padding-box,linear-gradient(to right, #24C6DC, #514A9D ) border-box;
+    border-width:3px;
+    border-style:solid;
+    border-color: transparent;
+    border-image-slice:1;
+    border-radius: 20px;
+}
 
+.lost:hover{
+    transform:rotateY(180deg);
+}
 
+.box {
+    position: relative;
+  }
+  .box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px; 
+    padding: 4px; 
+    background:linear-gradient(to right,#2C3E50,#4CA1AF); 
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude; 
+  }

@@ -1,9 +1,9 @@
 import './App.css';
-import Upcoming from './components/Upcoming';
-import Hero from './components/Hero';
-import Ranking from './components/Ranking';
-import Live from './components/Live';
-import Ended from './components/Ended';
+import Upcoming from './sections/Upcoming';
+import Hero from './sections/Hero';
+import Ranking from './sections/Ranking';
+import Live from './sections/Live';
+import Ended from './sections/Ended';
 import { useState } from 'react';
 function App() {
   const [open, setOpen]=useState(false)

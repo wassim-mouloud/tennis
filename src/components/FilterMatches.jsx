@@ -1,16 +1,23 @@
 import React from 'react'
+import {motion} from 'framer-motion'
+import { container, item } from '../motion'
 
 function FilterMatches({active, setActive}) {
 
   return (
-    <div className='flex gap-4 overflow-x-scroll scrollbar-hide p-5' >
-            <button onClick={()=>setActive('all')} className={`${active==='all'?'bg-[#008b8b]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center border-solid border-[#008b8b] border-[3px] hover:bg-[#008b8b]`} >All</button>
-            <button onClick={()=>setActive('atp')} className={`${active==='atp'?'bg-[#008b8b]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center border-solid border-[#008b8b] border-[3px] hover:bg-[#008b8b]`} >ATP</button>
-            <button onClick={()=>setActive('wta')} className={`${active==='wta'?'bg-[#008b8b]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center border-solid border-[#008b8b] border-[3px] hover:bg-[#008b8b]`} >WTA</button>
-            <button onClick={()=>setActive('singles')} className={`${active==='singles'?'bg-[#008b8b]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center border-solid border-[#008b8b] border-[3px] hover:bg-[#008b8b]`} >Singles</button>
-            <button onClick={()=>setActive('doubles')} className={`${active==='doubles'?'bg-[#008b8b]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center border-solid border-[#008b8b] border-[3px] hover:bg-[#008b8b]`} >Doubles</button>
-    </div>
+    <motion.div className='flex gap-4 overflow-x-scroll scrollbar-hide p-5'
+                initial='hidden'
+                animate='show'
+                variants={container}
+    >
+            <motion.button variants={item} onClick={()=>setActive('all')} className={`z-20 ${active==='all'?'bg-gradient-to-r from-[#2C3E50] to-[#4CA1AF]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center box hover:bg-gradient-to-r hover:from-[#2C3E50] hover:to-[#4CA1AF] `} >All</motion.button>
+            <motion.button variants={item} onClick={()=>setActive('atp')} className={`${active==='atp'?'bg-gradient-to-r from-[#2C3E50] to-[#4CA1AF]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center box  hover:bg-gradient-to-r hover:from-[#2C3E50] hover:to-[#4CA1AF]`} >ATP</motion.button>
+            <motion.button variants={item} onClick={()=>setActive('wta')} className={`${active==='wta'?'bg-gradient-to-r from-[#2C3E50] to-[#4CA1AF]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center  box  hover:bg-gradient-to-r hover:from-[#2C3E50] hover:to-[#4CA1AF]`} >WTA</motion.button>
+            <motion.button variants={item} onClick={()=>setActive('singles')} className={`${active==='singles'?'bg-gradient-to-r from-[#2C3E50] to-[#4CA1AF]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center  box  hover:bg-gradient-to-r hover:from-[#2C3E50] hover:to-[#4CA1AF]`} >Singles</motion.button>
+            <motion.button variants={item} onClick={()=>setActive('doubles')} className={`${active==='doubles'?'bg-gradient-to-r from-[#2C3E50] to-[#4CA1AF]':''} w-[30vw]  md:w-[200px] flex-shrink-0 h-[40px] p-3 rounded-[20px] text-white font-bold flex justify-center items-center  box  hover:bg-gradient-to-r hover:from-[#2C3E50] hover:to-[#4CA1AF]`} >Doubles</motion.button>
+    </motion.div>
   )
 }
 
 export default FilterMatches
+

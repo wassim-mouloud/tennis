@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Player from './Player';
+import Player from '../components/Player';
 import {motion} from 'framer-motion'
-
+import {container} from '../motion'
 function Ranking() {
 
     const [top10, setTop10]=useState([])
@@ -66,7 +66,11 @@ function Ranking() {
           }
         }}
         className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >ATP Ranking</motion.h2> 
-        <div className='flex overflow-x-scroll scrollbar-hide' >
+        <motion.div
+          initial='hidden'
+          animate='show'
+          variants={container}
+        className='flex overflow-x-scroll scrollbar-hide' >
             {top10 && top10.map((player, index)=>{
                 return(
                     <Player key={index} rank={player.Rank} name={player.Name} url={images[index]}/>
@@ -74,7 +78,7 @@ function Ranking() {
                     
                 )
             })}
-        </div>
+        </motion.div>
         
 
     </div>

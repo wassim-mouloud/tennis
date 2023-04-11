@@ -15,14 +15,19 @@ export const slide=(from, duration, delay)=>({
     
 })
 
-export const stagger=(staggerChildren, delayChildren) =>({
-    hidden:{
-      
-    },
-    show:{
-        transition:{
-            staggerChildren,
-            delayChildren
-        }
+
+export const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren:0,
+        staggerChildren:0.6,
+      }
     }
-})
+  }
+  
+ export  const item = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition:{duration:1.3} }
+  }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Tournament from './Tournament'
+import Tournament from '../components/Tournament'
 import {motion} from 'framer-motion'
 function Upcoming() {
 
@@ -8,7 +8,7 @@ function Upcoming() {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '07876d3a6dmsh30b40721cedd345p1be6bbjsnfe5c7ad8559b',
+            'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
             'X-RapidAPI-Host': 'tennis-live-data.p.rapidapi.com'
         }
     };
@@ -43,7 +43,7 @@ function Upcoming() {
         className='p-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text'>Upcoming Tournaments</motion.h2>
         <div className='flex gap-5 overflow-x-scroll  scrollbar-hide'>
             {
-               atpTournaments.map((tourney, index)=>{
+               atpTournaments && atpTournaments.map((tourney, index)=>{
                 return(
                     <Tournament key={index} start={tourney.start_date} end={tourney.end_date} city={tourney.city} country={tourney.country} surface={tourney.surface} name={tourney.name} url={tourney.surface.includes('Hard')?'https://longislandtennismagazine.com/sites/default/files/Tennis_Hard_Court_03_28_19.jpg':tourney.surface.includes('Clay')?'https://theracketlife.com/wp-content/uploads/2022/04/Can-You-Use-Hard-Court-Balls-On-Clay-Courts-00.jpg':tourney.surface.includes('Grass')?'https://photo-assets.wimbledon.com/images/pics/large/s_court_280616_666_fe.jpg':null}  />
                 )

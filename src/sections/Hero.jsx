@@ -1,8 +1,8 @@
 import React from 'react'
 import {motion} from 'framer-motion'
-import Duration from './Duration'
-import HeroTournament from './HeroTournament'
-import Round from './Round'
+import Duration from '../components/Duration'
+import HeroTournament from '../components/HeroTournament'
+import Round from '../components/Round'
 import { slide,} from '../motion'
 function Hero({s}) {
 

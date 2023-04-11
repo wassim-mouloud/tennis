@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import {motion, AnimatePresence} from 'framer-motion'
-import EndedResults from './EndedResults'
-import FilterMatches from './FilterMatches'
+import EndedResults from '../components/EndedResults'
+import FilterMatches from '../components/FilterMatches'
+import { countries } from '../utils/countries'
+import { players } from '../utils/players'
 
 function Ended() {
     const [ended, setEnded]=useState([])
     const [filtered, setFiltered]=useState([])
-    const [active, setActive]=useState('all')
+    const [playerCountries, setPlayerCountries]=useState([])
+    const [active, setActive]=useState('atp')
     const options = {
         method: 'GET',
         headers: {
@@ -24,6 +27,8 @@ function Ended() {
         }
         getEnded()
     },[])
+
+   
     
     useEffect(()=>{
         setFiltered(ended)
@@ -65,13 +70,19 @@ function Ended() {
        <motion.div
             layout
             className='flex gap-2 md:gap-6 overflow-x-scroll scrollbar-hide overflow-y-hidden' >
-                <AnimatePresence>
+
             {filtered.map((match, index)=>{
+                let awayName=match.awayTeam.name.substring(0, match.awayTeam.name.indexOf(" ")).toLowerCase()
+                let homeName=match.homeTeam.name.substring(0, match.homeTeam.name.indexOf(" ")).toLowerCase()
+                let awayCountry=players.find(element=>element.last_name.toLowerCase()===awayName)?.country
+                let homeCountry=players.find(element=>element.last_name.toLowerCase()===homeName)?.country
+                let awayFlag=awayCountry?countries.find(element=>element.name.common===awayCountry)?.flags[0]:null
+                let homeFlag=homeCountry?countries.find(element=>element.name.common===homeCountry)?.flags[0]:null
                 return(
-                    <EndedResults gm={false} round={match.roundInfo.name} type={match.tournament.category.flag} tournament={match.tournament.name}  r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null} key={index} />
+                    <EndedResults gm={false} awayFlag={awayFlag} homeFlag={homeFlag} round={match.roundInfo?.name || null} type={match.tournament.category.flag} tournament={match.tournament.name}  r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null} key={index} />
                 )
             })}
-            </AnimatePresence>
+            
         </motion.div>
        
     </div>

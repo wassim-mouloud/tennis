@@ -13,7 +13,7 @@ function Live({s}) {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
+		'X-RapidAPI-Key': '993374ba1fmsh65e6c12ee51854ap1cc3e9jsn506bb6462ab4',
 		'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
 	}
 };

@@ -14,7 +14,7 @@ function App() {
             <span className={`bg-white h-[2px] w-[25px] rounded-[25px] transition duration-[200ms] ${open===true?"rotate-45 translate-y-[10px]":""}`} ></span>
             <span className= {`bg-white h-[2px] w-[25px] rounded-[25px] transition duration-[200ms]  ${open===true?"-rotate-45 ":""}`} ></span>
         </div>
-        <div className={`flex  text-[1rem] text-white  flex-col  gap-3 mt-[60px]   `}  >
+        <div className={` text-[1rem] text-white  flex-col  gap-3 mt-[60px]  ${open?'flex':'hidden'} `}  >
           <p className={`w-[90vw] md:w-[27vw] ml-[7vw] md:ml-[5%] ${open===false?'opacity-0':'opacity-[1]'}   p-2 hover:bg-white hover:text-black rounded-[10px]`}><span className='text-gray-400'>01.</span> Live Matches</p>
           <div className={`w-[80vw] md:w-[90%]  mx-auto bg-gray-400 rounded-[10px] h-[2px] ${open===false?'opacity-0':'opacity-[1]'}`} ></div>
           <p className={`ml-[7vw] md:w-[27vw] p-2 md:ml-[5%] ${open===false?'opacity-0':'opacity-[1]'} hover:bg-white hover:text-black w-[90vw]  rounded-[10px] `} ><span className='text-gray-400'>02.</span> Calendar</p>

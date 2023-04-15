@@ -13,7 +13,7 @@ function Live({s}) {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '993374ba1fmsh65e6c12ee51854ap1cc3e9jsn506bb6462ab4',
+		'X-RapidAPI-Key': '07876d3a6dmsh30b40721cedd345p1be6bbjsnfe5c7ad8559b',
 		'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
 	}
 };
@@ -35,10 +35,13 @@ function Live({s}) {
           return r1 - r2;
         });
         setLive([...rated, ...unrated])
-        setFiltered([...rated, ...unrated])
     }
     getLive()
   },[])
+
+  useEffect(()=>{
+    setFiltered(live.filter(match => match.tournament.category.flag === 'atp'))
+  },[live])
 
     useEffect(()=>{
       if(active==='all'){

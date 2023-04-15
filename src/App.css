@@ -8,9 +8,7 @@
     margin: 0;
     padding: 0;
 }
-.test{
-    background-image:linear-gradient(to bottom,transparent, #13274F ),url("https://images.performgroup.com/di/library/omnisport/f1/46/stan-wawrinka_2kqvuq3ufz3lzjua1rz1e4p8.jpg?t=1886353143");
-}
+
 
 body{
     font-family: 'Poppins', sans-serif;
@@ -55,3 +53,17 @@ body{
     -webkit-mask-composite: xor;
             mask-composite: exclude; 
   }
+
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.test{
+    animation: fade 800ms linear;
+}

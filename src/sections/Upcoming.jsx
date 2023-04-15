@@ -32,7 +32,7 @@ function Upcoming() {
     },[])
     
   return (
-    <div className='mb-[50px]'>
+    <div className=''>
         <motion.h2
          initial={{opacity:0}}
          whileInView={{opacity:1,

@@ -289,7 +289,7 @@ export const players= [
         {
           "id": 235416,
           "first_name": "DUnited Statesn",
-          "last_name": "Lajovic",
+          "last_name": "Lajović",
           "full_name": "DUnited Statesn Lajovic",
           "country": "Serbia"
         },
@@ -436,7 +436,7 @@ export const players= [
         {
           "id": 86802,
           "first_name": "Feliciano",
-          "last_name": "Lopez",
+          "last_name": "López",
           "full_name": "Feliciano Lopez",
           "country": "Spain"
         },
@@ -492,7 +492,7 @@ export const players= [
         {
           "id": 100944,
           "first_name": "Vinolas",
-          "last_name": "Ramos",
+          "last_name": "Ramos-Viñolas",
           "full_name": "Vinolas Ramos",
           "country": "Spain"
         },
@@ -576,7 +576,7 @@ export const players= [
         {
           "id": 92604,
           "first_name": "Pablo",
-          "last_name": "Andujar",
+          "last_name": "Andújar",
           "full_name": "Pablo Andujar",
           "country": "Spain"
         },
@@ -1129,7 +1129,7 @@ export const players= [
         {
           "id": 463350,
           "first_name": "Pedro",
-          "last_name": "Martinez",
+          "last_name": "Martínez",
           "full_name": "Pedro Martinez",
           "country": "Spain"
         },
@@ -2157,8 +2157,8 @@ export const players= [
         },
         {
           "id": 1165128,
-          "first_name": "Yibing",
-          "last_name": "Wu",
+          "first_name": "Wu",
+          "last_name": "Yibing",
           "full_name": "Yibing Wu",
           "country": "China"
         },
@@ -2452,7 +2452,7 @@ export const players= [
         {
           "id": 870792,
           "first_name": "Alex",
-          "last_name": "Molcan",
+          "last_name": "Molčan",
           "full_name": "Alex Molcan",
           "country": "Slovakia"
         },
@@ -6365,7 +6365,7 @@ export const players= [
         {
           "id": 2094546,
           "first_name": "Dino",
-          "last_name": "Prizmic",
+          "last_name": "Prižmić",
           "full_name": "Dino Prizmic",
           "country": "Croatia"
         },
@@ -6652,7 +6652,7 @@ export const players= [
         {
           "id": 303858,
           "first_name": "Donna",
-          "last_name": "Vekic",
+          "last_name": "Vekić",
           "full_name": "Donna Vekic",
           "country": "Croatia"
         },
@@ -8178,7 +8178,7 @@ export const players= [
         {
           "id": 643974,
           "first_name": "Albon",
-          "last_name": "In",
+          "last_name": "In-albon",
           "full_name": "Albon In",
           "country": "Switzerland"
         },

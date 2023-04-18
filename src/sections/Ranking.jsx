@@ -55,7 +55,8 @@ function Ranking() {
         }
       }, [top10]);  
 
-    
+     
+
   return (
     <div className=''>
         <motion.h2 

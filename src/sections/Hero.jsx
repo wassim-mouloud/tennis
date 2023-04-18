@@ -34,7 +34,7 @@ function Hero({s}) {
   
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setIndex((index + 1) % 5);
+      setIndex(index=>(index + 1) % 5);
     }, 6000);
 
     return () => clearInterval(intervalId);
@@ -55,12 +55,12 @@ function Hero({s}) {
     }}
     >
       <div className='bg-[rgba(0,0,0,0.2)]  justify-center items-center p-3 absolute top-[40vh] left-[20px] hidden md:flex rounded-[10px] hover:bg-[rgba(0,0,0,0.8)] cursor-pointer '
-        onClick={()=>setIndex(index === 0 ? 4 : index - 1)}   
+        onClick={()=>setIndex(index=>index === 0 ? 4 : index - 1)}   
       >
         <img src="./left-arrow.png" alt=""  className='h-[28px] w-[28px] object-cover '/>
       </div>
       <div className='bg-[rgba(0,0,0,0.2)]  justify-center items-center p-3 absolute top-[40vh] right-[20px] hidden md:flex rounded-[10px] hover:bg-[rgba(0,0,0,0.8)] cursor-pointer'
-          onClick={()=>setIndex(index === 4 ? 0 : index + 1)}   
+          onClick={()=>setIndex(index=> index === 4 ? 0 : index + 1)}   
       >
         <img src="./right-arrow.png" alt=""  className='h-[28px] w-[28px] object-cover'/>
       </div>      <motion.h1 

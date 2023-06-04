@@ -43848,7 +43848,7 @@ export const countries=[
     },
     {
       "name": {
-        "common": "Taiwan",
+        "common": "Chinese Taipei",
         "official": "Republic of China (Taiwan)",
         "nativeName": {
           "zho": {

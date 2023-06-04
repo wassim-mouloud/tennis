@@ -86,7 +86,7 @@ export const players= [
         {
           "id": 387492,
           "first_name": "Borna",
-          "last_name": "Coric",
+          "last_name": "ćorić",
           "full_name": "Borna Coric",
           "country": "Croatia"
         },
@@ -2563,7 +2563,7 @@ export const players= [
         },
         {
           "id": 983988,
-          "first_name": "Tung",
+          "first_name": "Tung-Lin",
           "last_name": "Wu",
           "full_name": "Tung Wu",
           "country": "Chinese Taipei"
@@ -7100,8 +7100,8 @@ export const players= [
         {
           "id": 1139982,
           "first_name": "Anna",
-          "last_name": "Blinkova",
-          "full_name": "Anna Blinkova",
+          "last_name": "Blinková",
+          "full_name": "Anna Blinková",
           "country": "Russia"
         },
         {
@@ -7352,7 +7352,7 @@ export const players= [
         {
           "id": 510474,
           "first_name": "Karolina",
-          "last_name": "Muchova",
+          "last_name": "Muchová",
           "full_name": "Karolina Muchova",
           "country": "Czech Republic"
         },
@@ -7422,8 +7422,8 @@ export const players= [
         {
           "id": 1369644,
           "first_name": "Iga",
-          "last_name": "Swiatek",
-          "full_name": "Iga Swiatek",
+          "last_name": "Świątek",
+          "full_name": "Iga Świątek",
           "country": "Poland"
         },
         {
@@ -7933,7 +7933,7 @@ export const players= [
         {
           "id": 362400,
           "first_name": "Barbora",
-          "last_name": "Krejcikova",
+          "last_name": "Krejčíková",
           "full_name": "Barbora Krejcikova",
           "country": "Czech Republic"
         },
@@ -12328,4 +12328,5 @@ export const players= [
         }
   
       ]
+
 

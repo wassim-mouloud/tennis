@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Player from '../components/Player';
 import {motion} from 'framer-motion'
 import {container} from '../motion'
+import {countries} from '../utils/countries'
 function Ranking() {
 
     const [top10, setTop10]=useState([])
+    const [detail, setDetail]=useState([])
     const [images, setImages]=useState([])
     const options = {
         method: 'GET',
@@ -15,45 +17,62 @@ function Ranking() {
     };
     
     useEffect(() => {
-        async function getPlayers() {
-          let storedData = localStorage.getItem("top10");
-          let lastFetchTime = localStorage.getItem("top10LastFetchTime");
-          if (storedData && lastFetchTime && Date.now() - Number(lastFetchTime) < 30 * 24 * 60 * 60 * 1000) {
-            setTop10(JSON.parse(storedData));
-          } else {
-            let response = await fetch("https://ultimate-tennis1.p.rapidapi.com/live_leaderboard/10", options);
-            let ranking = await response.json();
-            setTop10(ranking.data);
-            localStorage.setItem("top10", JSON.stringify(ranking.data));
-            localStorage.setItem("top10LastFetchTime", Date.now());
-          }
+      async function getPlayers() {
+        let storedData = localStorage.getItem("top10");
+        let lastFetchTime = localStorage.getItem("top10LastFetchTime");
+        if (storedData && lastFetchTime && Date.now() - Number(lastFetchTime) < 30 * 24 * 60 * 60 * 1000) {
+          setTop10(JSON.parse(storedData));
+        } else {
+          let response = await fetch("https://ultimate-tennis1.p.rapidapi.com/live_leaderboard/10", options);
+          let ranking = await response.json();
+          setTop10(ranking.data);
+          localStorage.setItem("top10", JSON.stringify(ranking.data));
+          localStorage.setItem("top10LastFetchTime", Date.now());
         }
-        getPlayers();
-      }, []);
+      }
+      getPlayers();
+      
+    }, []);
     
 
       useEffect(() => {
-        async function getImages() {
-          let storedData = localStorage.getItem("images");
-          let lastFetchTime = localStorage.getItem("imagesLastFetchTime");
-          if (storedData && lastFetchTime && Date.now() - Number(lastFetchTime) < 30 * 24 * 60 * 60 * 1000) {
-            setImages(JSON.parse(storedData));
-          } else {
+        async function getDetail() {
+          let storedData = localStorage.getItem("top10Detail");
+          let lastFetchTime = localStorage.getItem("top10DetailLastFetchTime");
+          console.log(storedData)
+          console.log(lastFetchTime)
+          if (storedData && lastFetchTime && Date.now() - Number(lastFetchTime) < 10 * 24 * 60 * 60 * 1000) {
+            setDetail(JSON.parse(storedData));
+            
+          } 
+          else {
             let promises = top10.map(async (player) => {
               let r = await fetch(`https://ultimate-tennis1.p.rapidapi.com/player_info/${player.id}`, options);
               let json = await r.json();
-              return json.player_data[0].Image;
-            });
+              return json.player_data[0];
+            })
             let temp = await Promise.all(promises);
-            setImages(temp);
-            localStorage.setItem("images", JSON.stringify(temp));
-            localStorage.setItem("imagesLastFetchTime", Date.now());
+            setDetail(temp);
+            localStorage.setItem("top10Detail", JSON.stringify(temp));
+            localStorage.setItem("top10DetailLastFetchTime", Date.now());
           }
         }
+      
         if (top10.length > 0) {
-          getImages();
+          getDetail();
         }
-      }, [top10]);  
+      }, [top10]);
+        
+
+      useEffect(()=>{
+        if(detail.length>0){
+          detail.forEach((player) => {
+            setImages((prevImage) => [...prevImage, player.Image]);
+          });
+
+        }
+        console.log(detail)
+      },[detail])
 
      
 
@@ -72,11 +91,25 @@ function Ranking() {
           animate='show'
           variants={container}
         className='flex overflow-x-scroll scrollbar-hide' >
-            {top10 && top10.map((player, index)=>{
+            {detail && detail.map((player, index)=>{
+                let country=countries.find(country=>country.fifa===player["Flag Code"])
+                if (player['Flag Code']==="null"){
+                  country=countries.find(country=>country.fifa==="RUS")
+                }
+                let flag=country?country.flags[0]:null  
+                
                 return(
-                    <Player key={index} rank={player.Rank} name={player.Name} url={images[index]}/>
-        
-                    
+                    <Player 
+                      key={index} 
+                      rank={top10[index].Rank}
+                      name={player.Name}
+                      prize_money={player["Prize money Career"]} 
+                      age={player.Age} 
+                      country={player['Flag Code']==="null"?"RUS":player['Flag Code']} 
+                      ratio={player['W/L Career']}
+                      coach={player['Coach']} 
+                      flag={flag}  
+                      url={images[index]}/>
                 )
             })}
         </motion.div>

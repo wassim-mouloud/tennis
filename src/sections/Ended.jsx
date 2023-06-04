@@ -13,7 +13,7 @@ function Ended() {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
+            'X-RapidAPI-Key': '993374ba1fmsh65e6c12ee51854ap1cc3e9jsn506bb6462ab4',
             'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
         }
     };
@@ -37,19 +37,15 @@ function Ended() {
     useEffect(()=>{
         if(active==='all'){
             setFiltered(ended)
-            return
         }
         else if(active==='atp' || active==='wta'){
             setFiltered(ended.filter(match => match.tournament.category.flag === active && match.status.type === 'finished'))
-            return
         }
         else if(active==='singles'){
             setFiltered(ended.filter(match=>!match.awayTeam.name.includes('/')))
-            return
         }
         else if(active==='doubles'){
             setFiltered(ended.filter(match=>match.awayTeam.name.includes('/')))
-            return
         }
     },[active])
     
@@ -69,17 +65,17 @@ function Ended() {
        
        <motion.div
             layout
-            className='flex gap-2 md:gap-6 overflow-x-scroll scrollbar-hide overflow-y-hidden' >
+            className='flex gap-2 overflow-x-scroll overflow-y-hidden md:gap-6 scrollbar-hide' >
 
             {filtered.map((match, index)=>{
                 let awayName=match.awayTeam.name.substring(0, match.awayTeam.name.indexOf(" ")).toLowerCase()
                 let homeName=match.homeTeam.name.substring(0, match.homeTeam.name.indexOf(" ")).toLowerCase()
-                let awayCountry=players.find(element=>element.last_name.toLowerCase()===awayName)?.country
-                let homeCountry=players.find(element=>element.last_name.toLowerCase()===homeName)?.country
+                let awayCountry=players.find(element=>element.last_name.toLowerCase()===awayName || element.first_name.toLowerCase()===awayName)?.country
+                let homeCountry=players.find(element=>element.last_name.toLowerCase()===homeName || element.first_name.toLowerCase()===homeName)?.country
                 let awayFlag=awayCountry?countries.find(element=>element.name.common===awayCountry)?.flags[0]:null
                 let homeFlag=homeCountry?countries.find(element=>element.name.common===homeCountry)?.flags[0]:null
                 return(
-                    <EndedResults gm={false} awayFlag={awayFlag} homeFlag={homeFlag} round={match.roundInfo?.name || null} type={match.tournament.category.flag} tournament={match.tournament.name}  r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null} key={index} />
+                    <EndedResults gm={match.tournament.name.includes("French Open") || match.tournament.name.includes("Australian Open")||match.tournament.name.includes("Wimbledon")||match.tournament.name.includes("US Open")} awayFlag={awayFlag} homeFlag={homeFlag} round={match.roundInfo?.name || null} type={match.tournament.category.flag} tournament={match.tournament.name}  r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null} set4={'period4' in match.awayScore? {p1:match.awayScore.period4, p2:match.homeScore.period4}: null} set5={'period5' in match.awayScore? {p1:match.awayScore.period5, p2:match.homeScore.period5}: null} key={index} />
                 )
             })}
             

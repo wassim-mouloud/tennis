@@ -13,7 +13,7 @@ function Live({s}) {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
+		'X-RapidAPI-Key': '993374ba1fmsh65e6c12ee51854ap1cc3e9jsn506bb6462ab4',
 		'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
 	}
 };
@@ -74,7 +74,7 @@ function Live({s}) {
           }}
          className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >Live Matches</motion.h2> 
         <FilterMatches active={active} setActive={setActive}/>
-         <div className='flex gap-2 md:gap-6 overflow-x-scroll scrollbar-hide'>
+         <div className='flex gap-2 overflow-x-scroll md:gap-6 scrollbar-hide'>
          {filtered.map((match, index)=>{
             if (match.awayTeam.country.name === 'USA') {
               match.awayTeam.country.name = 'United States';
@@ -87,7 +87,7 @@ function Live({s}) {
             let awayCountry=countries.find(element=>match.awayTeam.country.name?element.name.common.toLowerCase()===match.awayTeam.country.name.toLowerCase():null)
             let homeCountry=countries.find(element=>match.homeTeam.country.name?element.name.common.toLowerCase()===match.homeTeam.country.name.toLowerCase():null)
             return(
-                <Results awayCountry={awayCountry?awayCountry.flags[0]:null} homeCountry={homeCountry?homeCountry.flags[0]:null}  gm={false}  round={match.roundInfo?.name || null} type={match.tournament.category.flag} tournament={match.tournament.name} tournamentId={match.tournament.uniqueTournament.id} r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null}  points={{p1:match.awayScore.point, p2:match.homeScore.point}} key={index} />
+                <Results  awayCountry={awayCountry?awayCountry.flags[0]:null} homeCountry={homeCountry?homeCountry.flags[0]:null}   round={match.roundInfo?.name || null} type={match.tournament.category.flag} tournament={match.tournament.name} tournamentId={match.tournament.uniqueTournament.id} r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null} set4={'period4' in match.awayScore? {p1:match.awayScore.period4, p2:match.homeScore.period4}: null} set5={'period5' in match.awayScore? {p1:match.awayScore.period5, p2:match.homeScore.period5}: null} points={{p1:match.awayScore.point, p2:match.homeScore.point}} gm={match.tournament.name.includes("French Open") || match.tournament.name.includes("Australian Open")||match.tournament.name.includes("Wimbledon")||match.tournament.name.includes("US Open")} key={index} />
             )
          })}
          </div>

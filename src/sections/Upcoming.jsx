@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Tournament from '../components/Tournament'
 import {motion} from 'framer-motion'
-import {months} from '../utils/months'
 import FilterTournaments from '../components/FilterTournaments'
 
-function Upcoming() {
+
+function Upcoming({currentMonth,setTournaments,openTourney, setOpenTourney, setName, setTournamentCity,setTournamentStart, setTournamentEnd, setTournamentSurface,setTournamentCountry}) {
 
     const [atpTournaments, setAtpTournaments]=useState([])
-    const currentDate = new Date();
-    const currentMonth = currentDate.toLocaleString('en-US', { month: 'long' });
-    const [active, setActive]=useState(['JAN-DEC'])
+    const [active, setActive]=useState([currentMonth])
     const [filtered, setFiltered]=useState([])
+    const [choose, setChoose]=useState(false)
+    const scrollContainerRef=useRef(null)
 
 
     const options = {
@@ -20,6 +20,7 @@ function Upcoming() {
             'X-RapidAPI-Host': 'tennis-live-data.p.rapidapi.com'
         }
     };
+    
 
     useEffect(()=>{
         async function getTournaments(){
@@ -44,29 +45,28 @@ function Upcoming() {
     },[])
 
     useEffect(()=>{
-        setFiltered(atpTournaments)
-    },[atpTournaments])
+        setTournaments(atpTournaments);
+    }, [atpTournaments]);
+    
 
     useEffect(() => {
-        const monthRange = {
-          'JAN-DEC': ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-          'JAN-MAR': ['01', '02', '03'],
-          'APR-JUN': ['04', '05', '06'],
-          'JUL-SEP': ['07', '08', '09'],
-          'OCT-DEC': ['10', '11', '12']
-        };
-      
-        const filteredTournaments = atpTournaments.filter(tourney => {
+
+
+        
+      const filteredTournaments = atpTournaments.filter(tourney => {
           const month = tourney.start_date.match(/-(\d{2})-/)[1];
-          return monthRange[active].includes(month);
+          return active.includes(month);
         });
-      
+  
         setFiltered(filteredTournaments);
-      }, [active]);
+        scrollContainerRef.current.scrollLeft=0
+
+
+      }, [atpTournaments, active]);
       
     
   return (
-    <div className=''>
+    <div className='' id='calendar'>
         <motion.h2
          initial={{opacity:0}}
          whileInView={{opacity:1,
@@ -75,12 +75,12 @@ function Upcoming() {
            }
          }}
         className='p-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text'>Upcoming Tournaments</motion.h2>
-        <FilterTournaments active={active} setActive={setActive} />
-        <div className='flex gap-5 overflow-x-scroll scrollbar-hide'>
+        <FilterTournaments active={active} setActive={setActive} choose={choose} setChoose={setChoose} />
+        <div ref={scrollContainerRef} className={`flex gap-5 overflow-x-scroll scrollbar-hide `}>
             {
                filtered && filtered.map((tourney, index)=>{
                 return(
-                    <Tournament key={index} start={tourney.start_date} end={tourney.end_date} city={tourney.city} country={tourney.country} surface={tourney.surface} name={tourney.name} url={tourney.surface.includes('Hard')?'https://longislandtennismagazine.com/sites/default/files/Tennis_Hard_Court_03_28_19.jpg':tourney.surface.includes('Clay')?'https://theracketlife.com/wp-content/uploads/2022/04/Can-You-Use-Hard-Court-Balls-On-Clay-Courts-00.jpg':tourney.surface.includes('Grass')?'https://photo-assets.wimbledon.com/images/pics/large/s_court_280616_666_fe.jpg':null}  />
+                    <Tournament choose={choose} setTournamentCity={setTournamentCity} setTournamentStart={setTournamentStart} setTournamentEnd={setTournamentEnd} setTournamentSurface={setTournamentSurface} setTournamentCountry={setTournamentCountry} setName={setName} openTourney={openTourney} setOpenTourney={setOpenTourney}  key={index} start={tourney.start_date} end={tourney.end_date} city={tourney.city} country={tourney.country} surface={tourney.surface} name={tourney.name} url={tourney.surface.includes('Hard')?'https://courtsunlimitedut.com/wp-content/uploads/2020/11/fall-winter-tennis-court-care.jpg':tourney.surface.includes('Clay')?'https://theracketlife.com/wp-content/uploads/2022/04/Can-You-Use-Hard-Court-Balls-On-Clay-Courts-00.jpg':tourney.surface.includes('Grass')?'https://photo-assets.wimbledon.com/images/pics/large/s_court_280616_666_fe.jpg':null}  />
                 )
             })
             

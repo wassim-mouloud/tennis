@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Results from '../components/Results'
 import {motion} from 'framer-motion'
 import FilterMatches from '../components/FilterMatches';
 import {countries} from '../utils/countries'
-function Live({s}) {
+function Live() {
 
   const [live, setLive]= useState([])
   const [filtered, setFiltered]=useState([])
   const [active, setActive]=useState('atp')
-
+  const scrollContainerRef= useRef(null)
 
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '993374ba1fmsh65e6c12ee51854ap1cc3e9jsn506bb6462ab4',
+		'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
 		'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
 	}
 };
@@ -22,8 +22,8 @@ function Live({s}) {
     async function getLive(){
         let response= await fetch('https://tennisapi1.p.rapidapi.com/api/tennis/events/live', options)
         let json= await response.json()
-        let rated = json.events.filter(match => match.homeTeam.ranking || match.awayTeam.ranking);
-        let unrated=json.events.filter(match=>match.homeTeam.ranking===null && match.awayTeam.ranking===null)
+        let rated = json.events.filter(match => (match.homeTeam.ranking || match.awayTeam.ranking) && !match.awayTeam.name.includes('/'));
+        let unrated=json.events.filter(match=>match.homeTeam.ranking===null && match.awayTeam.ranking===null && !match.awayTeam.name.includes('/'))
      
         rated.sort((a, b) => {
           const [r1, r2] = [
@@ -46,10 +46,14 @@ function Live({s}) {
     useEffect(()=>{
       if(active==='all'){
           setFiltered(live)
+          scrollContainerRef.current.scrollLeft = 0;
+
           return
       }
       else if(active==='atp' || active==='wta'){
           setFiltered(live.filter(match => match.tournament.category.flag === active))
+          scrollContainerRef.current.scrollLeft = 0;
+
           return
       }
       else if(active==='singles'){
@@ -64,7 +68,7 @@ function Live({s}) {
   
 
   return (
-    <div className={` ${s===false?'':'blur-md'}`}>
+    <div id='live'>
          <motion.h2
           initial={{opacity:0}}
           whileInView={{opacity:1,
@@ -74,7 +78,7 @@ function Live({s}) {
           }}
          className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >Live Matches</motion.h2> 
         <FilterMatches active={active} setActive={setActive}/>
-         <div className='flex gap-2 overflow-x-scroll md:gap-6 scrollbar-hide'>
+         <div ref={scrollContainerRef} className='flex gap-2 overflow-x-scroll md:gap-6 scrollbar-hide'>
          {filtered.map((match, index)=>{
             if (match.awayTeam.country.name === 'USA') {
               match.awayTeam.country.name = 'United States';

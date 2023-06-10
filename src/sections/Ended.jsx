@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import {motion, AnimatePresence} from 'framer-motion'
 import EndedResults from '../components/EndedResults'
 import FilterMatches from '../components/FilterMatches'
@@ -10,10 +10,11 @@ function Ended() {
     const [filtered, setFiltered]=useState([])
     const [playerCountries, setPlayerCountries]=useState([])
     const [active, setActive]=useState('atp')
+    const scrollContainerRef = useRef(null);
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '993374ba1fmsh65e6c12ee51854ap1cc3e9jsn506bb6462ab4',
+            'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
             'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
         }
     };
@@ -23,7 +24,7 @@ function Ended() {
         async function getEnded(){
             let response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/events/${x.getDate()}/${x.getMonth()+1}/${x.getFullYear()}`, options)
             let json = await response.json()
-            setEnded(json.events.filter(match=>match.status.type === 'finished'))
+            setEnded(json.events.filter(match=>match.status.type === 'finished' && !match.awayTeam.name.includes('/')))
         }
         getEnded()
     },[])
@@ -31,15 +32,17 @@ function Ended() {
    
     
     useEffect(()=>{
-        setFiltered(ended)
+        setFiltered(ended.filter(match => match.tournament.category.flag === active && match.status.type === 'finished'))
     }, [ended])
     
     useEffect(()=>{
         if(active==='all'){
             setFiltered(ended)
+            scrollContainerRef.current.scrollLeft = 0;
         }
         else if(active==='atp' || active==='wta'){
             setFiltered(ended.filter(match => match.tournament.category.flag === active && match.status.type === 'finished'))
+            scrollContainerRef.current.scrollLeft = 0;
         }
         else if(active==='singles'){
             setFiltered(ended.filter(match=>!match.awayTeam.name.includes('/')))
@@ -52,7 +55,7 @@ function Ended() {
     
     
   return (
-    <div className='' >
+    <div className='' id='ended' >
         <motion.h2 
          initial={{opacity:0}}
          whileInView={{opacity:1,
@@ -60,11 +63,11 @@ function Ended() {
              duration:1.5
            }
          }}
-        className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >Ended Matches</motion.h2> 
+        className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >Completed Matches</motion.h2> 
         <FilterMatches active={active} setActive={setActive}/>
        
        <motion.div
-            layout
+            ref={scrollContainerRef}
             className='flex gap-2 overflow-x-scroll overflow-y-hidden md:gap-6 scrollbar-hide' >
 
             {filtered.map((match, index)=>{

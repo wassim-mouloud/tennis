@@ -11,7 +11,7 @@ function Ranking() {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '07876d3a6dmsh30b40721cedd345p1be6bbjsnfe5c7ad8559b',
+            'X-RapidAPI-Key': '8d3375ce3emsh941ecfb03c58645p1ecfa8jsneaaa1743c0b4',
             'X-RapidAPI-Host': 'ultimate-tennis1.p.rapidapi.com'
         }
     };
@@ -39,8 +39,6 @@ function Ranking() {
         async function getDetail() {
           let storedData = localStorage.getItem("top10Detail");
           let lastFetchTime = localStorage.getItem("top10DetailLastFetchTime");
-          console.log(storedData)
-          console.log(lastFetchTime)
           if (storedData && lastFetchTime && Date.now() - Number(lastFetchTime) < 10 * 24 * 60 * 60 * 1000) {
             setDetail(JSON.parse(storedData));
             
@@ -71,13 +69,13 @@ function Ranking() {
           });
 
         }
-        console.log(detail)
+    
       },[detail])
 
      
 
   return (
-    <div className=''>
+    <div className='' id='ranking' >
         <motion.h2 
         initial={{opacity:0}}
         whileInView={{opacity:1,

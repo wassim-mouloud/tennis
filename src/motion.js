@@ -22,7 +22,7 @@ export const container = {
       opacity: 1,
       transition: {
         delayChildren:0,
-        staggerChildren:0.6,
+        staggerChildren:0,
       }
     }
   }

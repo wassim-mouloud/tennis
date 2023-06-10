@@ -3,7 +3,7 @@ import {motion} from 'framer-motion'
 import { slide,} from '../motion'
 
 
-function Hero({s}) {
+function Hero() {
   const [news, setNews]=useState([])
   const [img, setImg]=useState('')
   const [index, setIndex]=useState(0)
@@ -49,7 +49,7 @@ function Hero({s}) {
 
 
   return (
-    <motion.div className={`${active===true?'test':''} relative bg-no-repeat bg-cover bg-center md:bg-top mb-[50px]  p-5 h-[80vh] w-screen  flex flex-col gap-4 ${s===false?'':'blur-md'} `}
+    <motion.div id='hero' className={`${active===true?'test':''} relative bg-no-repeat bg-cover bg-center md:bg-top mb-[50px]  p-5 h-[80vh] w-screen  flex flex-col gap-4  `}
     style={{
       backgroundImage: `linear-gradient(to bottom,transparent, #13274F), url(${img ? img : ''})`,
     }}

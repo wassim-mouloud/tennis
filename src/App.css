@@ -7,12 +7,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 
 body{
     font-family: 'Poppins', sans-serif;
     background-color: #13274F;
+    
     
 }
 
@@ -54,6 +56,23 @@ body{
     -webkit-mask-composite: xor;
             mask-composite: exclude; 
   }
+.box2 {
+    position: relative;
+  }
+  
+.box2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px; 
+    padding: 4px; 
+    background:linear-gradient(to right,#00c3ff,#ffff1c); 
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude; 
+  }
 
 
 @keyframes fade{
@@ -74,14 +93,29 @@ body{
 }
 
 .flip:hover{
-    transform: rotateY(180deg) scale(1.05);
+    transform: rotateY(180deg) ;
 }
 
 .noflip:hover{
-    transform: rotateY(0deg) scale(1.05);
+    transform: rotateY(0deg) ;
 
+}
+
+@media only screen and (min-width:1024px){
+    .flip:hover{
+        transform: rotateY(180deg) scale(1.05) ;
+    }
+    
+    .noflip:hover{
+        transform: rotateY(0deg) scale(1.05) ;
+    
+    }
 }
 
 .test2{
     transform: rotateY(180deg);
+}
+
+.translatex{
+    transform: translateX(50%);
 }

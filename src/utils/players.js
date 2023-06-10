@@ -6890,7 +6890,7 @@ export const players= [
         {
           "id": 277836,
           "first_name": "Anna",
-          "last_name": "Schmiedlova",
+          "last_name": "Schmiedlová",
           "full_name": "Anna Schmiedlova",
           "country": "Slovakia"
         },

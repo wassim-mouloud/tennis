@@ -7,7 +7,7 @@ function Player({rank, name, prize_money,age, url, country, ratio, height, weigh
   const [flip, setFlip] = useState(false)
   
   return (
-    <motion.div variants={item} className={` first:ml-[20px] relative h-[300px] rounded-[10px]  flex-shrink-0 md:h-[420px] w-[250px] transition-all duration-[300ms] z-20  my-[30px] mr-[20px]  ${rank===1?'ml-[20px]':''} ${flip?'flip':'noflip'}  `} >
+    <motion.div variants={item} className={` first:ml-[20px] last:mr-[20px] relative h-[300px] rounded-[10px]  flex-shrink-0 md:h-[420px] w-[250px] transition-all duration-[300ms] my-[30px] mr-[20px]  ${rank===1?'ml-[20px]':''} ${flip?'flip':'noflip'}  `} >
         <div className={`${flip?'bg-[linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))]':'bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3))]'} rounded-[20px]  w-full h-full absolute inset-0 `} ></div>
         <img src={url} alt="player" className={` ${flip?'opacity-0':'opacity-[1] transition-all duration-[0ms] delay-[150ms]'}   rounded-[20px] w-full h-full  object-cover  flex-shrink-0 object-top   bg-cover bg-center`} style={{backgroundImage:`url(${flag})`}} />
         <p 

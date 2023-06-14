@@ -28,14 +28,14 @@ function TournamentDetail({handleClose, name,city, surface, country, start, end}
   return (
     <Backdrop onClick={handleClose} >
         <motion.div
-            className='w-[90vw] md:w-[50vw] h-[50vh] bg-white rounded-[15px] '
+            className='w-[90vw] md:w-[50vw] h-[50vh] relative bg-white rounded-[15px]'
             onClick={e=>e.stopPropagation()}
             variants={dropIn}
             initial="hidden"
             animate="show"
             exit="exit"
         >
-            <img className='object-cover w-full h-full rounded-[15px]' src={surface.includes('Hard')?'https://courtsunlimitedut.com/wp-content/uploads/2020/11/fall-winter-tennis-court-care.jpg':surface.includes('Clay')?'https://theracketlife.com/wp-content/uploads/2022/04/Can-You-Use-Hard-Court-Balls-On-Clay-Courts-00.jpg':surface.includes('Grass')?'https://photo-assets.wimbledon.com/images/pics/large/s_court_280616_666_fe.jpg':null} alt="" />
+            <img className='object-cover w-full h-full rounded-[15px]' src={surface.includes('Hard')?'./hard_court.jpeg':surface.includes('Clay')?'./clay_court.webp':surface.includes('Grass')?'./grass_court.jpeg':null} alt="" />
             <div className='bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))] rounded-[15px]  w-full h-full absolute inset-0 ' />
             <div className='w-full flex gap-2 justify-center items-center absolute top-[50px]' >
                 <img src="./calendar.png" alt="" className='h-[16px] w-[16px] mr-[10px] '/>

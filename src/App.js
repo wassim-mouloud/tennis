@@ -58,8 +58,9 @@ function App() {
 
         <Upcoming currentMonth={currentMonth} setTournaments={setTournaments} openTourney={openTourney} setOpenTourney={setOpenTourney} setName={setName} setTournamentCity={setTournamentCity} setTournamentStart={setTournamentStart} setTournamentEnd={setTournamentEnd} setTournamentSurface={setTournamentSurface} setTournamentCountry={setTournamentCountry} />
         <AnimatePresence  initial={false}  mode='wait' onExitComplete={()=>null}>
-            {(openTourney) && <TournamentDetail handleClose={()=>setOpenTourney(false)} name={tournamentName} city={tournamentCity} start={tournamentStart} end={tournamentEnd} surface={tournamentSurface} country={tournamentCountry}/>}
+        {(openTourney) && <TournamentDetail handleClose={()=>setOpenTourney(false)} name={tournamentName} city={tournamentCity} start={tournamentStart} end={tournamentEnd} surface={tournamentSurface} country={tournamentCountry}/>}
         </AnimatePresence>
+
         {open && <Backdrop onClick={()=>setOpen(false)} />}
         {openSearch && <Backdrop onClick={closeSearch} />}
       

@@ -3880,8 +3880,8 @@ export const players= [
         {
           "id": 349338,
           "first_name": "Christopher",
-          "last_name": "Oconnell",
-          "full_name": "Christopher Oconnell",
+          "last_name": "O'Connell",
+          "full_name": "Christopher O'Connell",
           "country": "Australia"
         },
         {

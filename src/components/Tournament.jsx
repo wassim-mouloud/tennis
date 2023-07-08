@@ -19,7 +19,7 @@ function Tournament({url, name, city, surface, country, start, end, setOpenTourn
           <p className='text-[12px] text-[#03A89E]' >{end}</p>
         </div>
         <div className='flex flex-col items-center w-full gap-2 absolute bottom-[30px] md:bottom-[40px]'>
-          <p className='text-white text-[14px] md:text-[18px] font-bold'>{name}</p>
+          <p className='text-white text-[14px] md:text-[18px] font-bold text-center'>{name}</p>
           <div className='flex gap-2' >
               <span className='text-[12px] text-[#20BF55]' >• {city}</span>
               <span className='text-[12px] text-[#20BF55]' >• {country}</span>

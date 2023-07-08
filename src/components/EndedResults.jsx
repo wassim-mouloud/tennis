@@ -14,9 +14,9 @@ function Results({firstP, secondP, gm, set1, set2, set3, set4, set5, points, set
   return (
     <>
     {gm===false?(
-        <motion.div 
-                
-             className='first:ml-[20px] last:mr-[20px] md:hover:scale-105  transition-all duration-[300ms] relative bg-[#091327] lg:w-[calc(100vw/4)] h-[200px] w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] mb-[20px] justify-center flex-shrink-0'>
+        <motion.div    
+            whileTap={{cursor:'grabbing'}}
+             className='first:ml-[20px] last:mr-[20px] md:hover:scale-105  transition-all duration-[300ms] relative bg-[#091327] lg:w-[calc(100vw/4)] h-[200px] w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] mb-[20px] justify-center flex-shrink-0 cursor-pointer'>
             <div className='flex gap-2 ' >
                 <p className='text-[#20BF55] text-[12px]' >{tournament}</p>
                 <p className='text-[#20BF55] text-[12px]' >({type})</p>
@@ -24,7 +24,7 @@ function Results({firstP, secondP, gm, set1, set2, set3, set4, set5, points, set
             <p className='text-[#20BF55] text-[14px]' >{round}</p>
             <div className='relative flex items-center w-full gap-5 md:gap-12'>
                 <div className='w-[60%] md:w-[50%] flex gap-2 items-center' >
-                    {awayFlag &&homeFlag?<img src={awayFlag} className='w-[24px] h-[24px]  object-cover rounded-[50%]'/>:null}
+                    {awayFlag &&homeFlag?<img src={awayFlag} className='w-[24px] h-[24px] skeleton object-cover rounded-[50%]'/>:null}
                     <p className={`font-bold text-[16px] ${set2 && set3 ? (set3.p1 < set3.p2 ? 'text-gray-400' : 'text-white') : (set2 && !set3 ? (set2.p1 < set2.p2 ? 'text-gray-400' : 'text-white'):'text-white')} `}>{firstP}</p>
                     {r1?<p className='text-[#788AA3] text-[12px]' >({r1})</p>:null}
                 </div>
@@ -56,8 +56,9 @@ function Results({firstP, secondP, gm, set1, set2, set3, set4, set5, points, set
      </motion.div>
     ):(
         <div 
-                
-             className='first:ml-[20px] last:mr-[20px] mb-[20px] relative bg-[#091327] md:hover:scale-[1.05] transition-all duration-[300ms] lg:w-[calc(100vw/3.5)] h-[200px] w-[90vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0'>
+            whileTap={{cursor:'grabbing'}}
+
+             className='first:ml-[20px] last:mr-[20px] mb-[20px] relative bg-[#091327] md:hover:scale-[1.05] transition-all duration-[300ms] lg:w-[calc(100vw/3.5)] h-[200px] w-[90vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0 cursor-grab'>
             <div className='flex gap-2 ' >
                 <p className='text-[#20BF55] text-[12px]' >{tournament}</p>
                 <p className='text-[#20BF55] text-[12px]' >({type})</p>

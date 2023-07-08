@@ -29,5 +29,6 @@ export const container = {
   
  export  const item = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition:{duration:1.3} }
+    show: { opacity: 1, transition:{duration:1} }
   }
+

@@ -75,6 +75,10 @@ body{
   }
 
 
+.test{
+      animation: fade 600ms linear;
+  }
+
 @keyframes fade{
     from{
         opacity: 0;
@@ -84,9 +88,6 @@ body{
     }
 }
 
-.test{
-    animation: fade 800ms linear;
-}
 
 .flip{
     transform: rotateY(180deg);
@@ -118,4 +119,17 @@ body{
 
 .translatex{
     transform: translateX(50%);
+}
+
+.skeleton{
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading{
+    0%{
+        background-color: hsl(200, 20%, 70%);
+    }
+    100%{
+        background-color:#A9A9A9;
+    }
 }

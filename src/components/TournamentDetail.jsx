@@ -35,7 +35,7 @@ function TournamentDetail({handleClose, name,city, surface, country, start, end}
             animate="show"
             exit="exit"
         >
-            <img className='object-cover w-full h-full rounded-[15px]' src={surface.includes('Hard')?'./hard_court.jpeg':surface.includes('Clay')?'./clay_court.webp':surface.includes('Grass')?'./grass_court.jpeg':null} alt="" />
+            <img className='object-cover w-full h-full rounded-[15px]' src={surface.includes('Hard')?'./hard_court.webp':surface.includes('Clay')?'./clay_court.webp':surface.includes('Grass')?'./grass_court.webp':null} alt="" />
             <div className='bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))] rounded-[15px]  w-full h-full absolute inset-0 ' />
             <div className='w-full flex gap-2 justify-center items-center absolute top-[50px]' >
                 <img src="./calendar.png" alt="" className='h-[16px] w-[16px] mr-[10px] '/>

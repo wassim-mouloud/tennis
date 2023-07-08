@@ -7,13 +7,15 @@ function Live() {
 
   const [live, setLive]= useState([])
   const [filtered, setFiltered]=useState([])
-  const [active, setActive]=useState('atp')
+  const [active, setActive]=useState('all')
   const scrollContainerRef= useRef(null)
+  const [leftConstraint, setLeftConstraint]= useState(0)
+
 
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '8951329bd7msha60049130daf0c6p14ecdejsn70858ee3c4ec',
+		'X-RapidAPI-Key': '8d3375ce3emsh941ecfb03c58645p1ecfa8jsneaaa1743c0b4',
 		'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
 	}
 };
@@ -40,7 +42,7 @@ function Live() {
   },[])
 
   useEffect(()=>{
-    setFiltered(live.filter(match => match.tournament.category.flag === 'atp'))
+    setFiltered(live)
   },[live])
 
     useEffect(()=>{
@@ -65,6 +67,11 @@ function Live() {
           return
       }
   },[active])
+
+      
+  useEffect(()=>{
+    setLeftConstraint(scrollContainerRef?.current?.scrollWidth - scrollContainerRef?.current?.offsetWidth)
+})
   
 
   return (
@@ -78,23 +85,25 @@ function Live() {
           }}
          className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >Live Matches</motion.h2> 
         <FilterMatches active={active} setActive={setActive}/>
-         <div ref={scrollContainerRef} className='flex gap-2 overflow-x-scroll md:gap-6 scrollbar-hide'>
-         {filtered.map((match, index)=>{
-            if (match.awayTeam.country.name === 'USA') {
-              match.awayTeam.country.name = 'United States';
-            }
-            
-            if (match.homeTeam.country.name === 'USA') {
-              match.homeTeam.country.name = 'United States';
-            }
-            
-            let awayCountry=countries.find(element=>match.awayTeam.country.name?element.name.common.toLowerCase()===match.awayTeam.country.name.toLowerCase():null)
-            let homeCountry=countries.find(element=>match.homeTeam.country.name?element.name.common.toLowerCase()===match.homeTeam.country.name.toLowerCase():null)
-            return(
-                <Results  awayCountry={awayCountry?awayCountry.flags[0]:null} homeCountry={homeCountry?homeCountry.flags[0]:null}   round={match.roundInfo?.name || null} type={match.tournament.category.flag} tournament={match.tournament.name} tournamentId={match.tournament.uniqueTournament.id} r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null} set4={'period4' in match.awayScore? {p1:match.awayScore.period4, p2:match.homeScore.period4}: null} set5={'period5' in match.awayScore? {p1:match.awayScore.period5, p2:match.homeScore.period5}: null} points={{p1:match.awayScore.point, p2:match.homeScore.point}} gm={match.tournament.name.includes("French Open") || match.tournament.name.includes("Australian Open")||match.tournament.name.includes("Wimbledon")||match.tournament.name.includes("US Open")} key={index} />
-            )
-         })}
-         </div>
+         <motion.div classname='w-screen overflow-x-scroll' >
+           <motion.div drag='x' dragConstraints={{right:0, left:-leftConstraint}} ref={scrollContainerRef} className='flex w-full gap-2 overflow-x-scroll md:gap-6 '>
+           {filtered.map((match, index)=>{
+              if (match.awayTeam.country.name === 'USA') {
+                match.awayTeam.country.name = 'United States';
+              }
+           
+              if (match.homeTeam.country.name === 'USA') {
+                match.homeTeam.country.name = 'United States';
+              }
+           
+              let awayCountry=countries.find(element=>match.awayTeam.country.name?element.name.common.toLowerCase()===match.awayTeam.country.name.toLowerCase():null)
+              let homeCountry=countries.find(element=>match.homeTeam.country.name?element.name.common.toLowerCase()===match.homeTeam.country.name.toLowerCase():null)
+              return(
+                  <Results  awayCountry={awayCountry?awayCountry.flags[0]:null} homeCountry={homeCountry?homeCountry.flags[0]:null}   round={match.roundInfo?.name || null} type={match.tournament.category.flag} tournament={match.tournament.name} tournamentId={match.tournament.uniqueTournament.id} r1={match.awayTeam.ranking} r2={match.homeTeam.ranking} firstP={match.awayTeam.name} secondP={match.homeTeam.name} set1={'period1' in match.awayScore? {p1:match.awayScore.period1, p2:match.homeScore.period1}: null} set2={'period2' in match.awayScore? {p1:match.awayScore.period2, p2:match.homeScore.period2}: null} set3={'period3' in match.awayScore? {p1:match.awayScore.period3, p2:match.homeScore.period3}: null} set4={'period4' in match.awayScore? {p1:match.awayScore.period4, p2:match.homeScore.period4}: null} set5={'period5' in match.awayScore? {p1:match.awayScore.period5, p2:match.homeScore.period5}: null} points={{p1:match.awayScore.point, p2:match.homeScore.point}} gm={match.tournament.name.includes("French Open") || match.tournament.name.includes("Australian Open")||match.tournament.name.includes("Wimbledon")||match.tournament.name.includes("US Open")} key={index} />
+              )
+           })}
+           </motion.div>
+         </motion.div>
     </div>
   )
 }

@@ -14,7 +14,7 @@ function Ended() {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '8d3375ce3emsh941ecfb03c58645p1ecfa8jsneaaa1743c0b4',
+            'X-RapidAPI-Key': 'c28d3912b5msh098dac9629c9e1bp10f86bjsnf509f72d9bb1',
             'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
         }
     };
@@ -39,6 +39,7 @@ function Ended() {
         if(active==='all'){
             setFiltered(ended)
             scrollContainerRef.current.scrollLeft = 0;
+            console.log( scrollContainerRef.current.scrollLeft)
         }
         else if(active==='atp' || active==='wta'){
             setFiltered(ended.filter(match => match.tournament.category.flag === active && match.status.type === 'finished'))

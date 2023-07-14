@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import {motion} from 'framer-motion'
 
 function Results({firstP, secondP, gm, set1, set2, set3,set4,set5, points, sets, r1, r2, tournament, round, type, awayCountry, homeCountry}) {
     const [image, setImage]= useState("")
@@ -12,7 +13,7 @@ function Results({firstP, secondP, gm, set1, set2, set3,set4,set5, points, sets,
   return (
     <>
     {gm===false?(
-         <div className='first:ml-[20px] last:mr-[20px] md:hover:scale-[1.05] mb-[20px] transition-all relative bg-[#091327] md:w-[calc(100vw/4)] h-[200px]  w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0'>
+         <motion.div className='first:ml-[20px] last:mr-[20px] md:hover:scale-[1.05] mb-[20px] transition-all relative bg-[#091327] md:w-[calc(100vw/4)] h-[200px]  w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0 cursor-grab'>
             <div className='flex gap-2' >
                 <p className='text-[#20BF55] text-[12px]' >{tournament}</p>
                 <p className='text-[#20BF55] text-[12px]' >({type})</p>
@@ -49,9 +50,9 @@ function Results({firstP, secondP, gm, set1, set2, set3,set4,set5, points, sets,
                 </div>
             </div>
  
-     </div>
+     </motion.div>
     ):(
-        <div className='first:ml-[20px] last:mr-[20px] md:hover:scale-[1.05] transition-all mb-[20px] relative bg-[#091327] md:w-[calc(100vw/3.3)] h-[200px]  w-[90vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0'>
+        <motion.div className='first:ml-[20px] last:mr-[20px] md:hover:scale-[1.05] transition-all mb-[20px] relative bg-[#091327] md:w-[calc(100vw/3.3)] h-[200px]  w-[90vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] justify-center flex-shrink-0 cursor-grab'>
             <div className='flex gap-2' >
                 <p className='text-[#20BF55] text-[12px]' >{tournament}</p>
                 <p className='text-[#20BF55] text-[12px]' >({type})</p>
@@ -92,7 +93,7 @@ function Results({firstP, secondP, gm, set1, set2, set3,set4,set5, points, sets,
                 </div>
             </div>
  
-     </div>
+     </motion.div>
     )}
     </>
    

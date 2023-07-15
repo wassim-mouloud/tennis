@@ -82,12 +82,12 @@ function Upcoming({
         Upcoming Tournaments
       </motion.h2>
       <FilterTournaments active={active} setActive={setActive} choose={choose} setChoose={setChoose} />
-      <motion.div className='w-screen overflow-x-scroll ' >
+      <motion.div className='w-screen ' >
         <motion.div 
           ref={scrollContainerRef}
-          className={`w-full flex gap-5  `}
-          drag='x'
-          dragConstraints={{right:0, left:-leftConstraint}}
+          className={`w-full flex gap-5 overflow-x-scroll  `}
+          // drag='x'
+          // dragConstraints={{right:0, left:-leftConstraint}}
          
          >
           {

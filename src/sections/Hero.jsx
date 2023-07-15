@@ -38,7 +38,7 @@ function Hero() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setIndex((index + 1) % 5)
-    }, 3000)
+    }, 6000)
 
     // Cleanup on unmount
     return () => clearInterval(intervalId)

@@ -96,15 +96,15 @@ function Ranking() {
           }
         }}
         className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >ATP Ranking</motion.h2> 
-        <motion.div className='w-screen overflow-x-scroll' >
+        <motion.div className='w-screen ' >
           <motion.div
             ref={scrollContainerRef}
             initial='hidden'
             animate='show'
             variants={container}
-            drag='x'
-            dragConstraints={{right:0, left:-leftConstraint}}
-            className='flex w-full ' >
+            // drag='x'
+            // dragConstraints={{right:0, left:-leftConstraint}}
+            className='flex w-full overflow-x-scroll ' >
               {detail && detail.map((player, index)=>{
                   let country=countries.find(country=>country.fifa===player["Flag Code"])
                   if (player['Flag Code']==="null"){

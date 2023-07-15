@@ -85,8 +85,8 @@ function Live() {
           }}
          className='pl-5 text-[32px] font-bold bg-gradient-to-r from-[#20BF55] to-[#01BAEF] inline-block text-transparent bg-clip-text' >Live Matches</motion.h2> 
         <FilterMatches active={active} setActive={setActive}/>
-         <motion.div classname='w-screen overflow-x-scroll' >
-           <motion.div drag='x' dragConstraints={{right:0, left:-leftConstraint}} ref={scrollContainerRef} className='flex w-full gap-2 md:gap-6 '>
+         <motion.div classname='w-screen ' >
+           <motion.div  ref={scrollContainerRef} className='flex w-full gap-2 overflow-x-scroll md:gap-6 '>
            {filtered.map((match, index)=>{
               if (match.awayTeam.country.name === 'USA') {
                 match.awayTeam.country.name = 'United States';

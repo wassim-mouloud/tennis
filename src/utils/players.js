@@ -6953,8 +6953,8 @@ export const players= [
         {
           "id": 916836,
           "first_name": "Marketa",
-          "last_name": "Vondrousova",
-          "full_name": "Marketa Vondrousova",
+          "last_name": "Vondroušová",
+          "full_name": "Marketa Vondroušová",
           "country": "Czech Republic"
         },
         {
@@ -8514,7 +8514,7 @@ export const players= [
         {
           "id": 278580,
           "first_name": "Jesika",
-          "last_name": "Maleckova",
+          "last_name": "Malečková",
           "full_name": "Jesika Maleckova",
           "country": "Czech Republic"
         },

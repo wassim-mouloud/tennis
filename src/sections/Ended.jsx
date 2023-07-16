@@ -59,7 +59,7 @@ function Ended() {
     })
     
   return (
-    <div className='horizontal-scroll' id='ended' >
+    <div className='' id='ended' >
         <motion.h2 
          initial={{opacity:0}}
          whileInView={{opacity:1,
@@ -73,7 +73,7 @@ function Ended() {
        <motion.div className='w-screen '>
            <motion.div
                 ref={scrollContainerRef}
-                className='flex w-full gap-2 overflow-x-scroll md:gap-6 '
+                className='flex w-full gap-2 overflow-x-scroll md:gap-6 horizontal-scroll '
                 // drag='x'
                 // dragConstraints={{right:0, left:-leftConstraint}}
                 >

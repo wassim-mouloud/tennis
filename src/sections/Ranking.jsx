@@ -104,7 +104,7 @@ function Ranking() {
             variants={container}
             // drag='x'
             // dragConstraints={{right:0, left:-leftConstraint}}
-            className='flex w-full overflow-x-scroll ' >
+            className='flex w-full overflow-x-scroll horizontal-scroll ' >
               {detail && detail.map((player, index)=>{
                   let country=countries.find(country=>country.fifa===player["Flag Code"])
                   if (player['Flag Code']==="null"){

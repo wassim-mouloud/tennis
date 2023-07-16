@@ -85,7 +85,7 @@ function Upcoming({
       <motion.div className='w-screen ' >
         <motion.div 
           ref={scrollContainerRef}
-          className={`w-full flex gap-5 overflow-x-scroll  `}
+          className={`w-full flex gap-5 overflow-x-scroll horizontal-scroll `}
           // drag='x'
           // dragConstraints={{right:0, left:-leftConstraint}}
          

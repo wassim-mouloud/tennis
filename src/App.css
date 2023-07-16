@@ -135,16 +135,19 @@ body{
     }
 }
 
-.horizontal-scroll::-webkit-scrollbar{
-    width: 0.5vw;
+::-webkit-scrollbar{
+    width: 1vw;
     height: 1.5vh;
 }
 
-.horizontal-scroll::-webkit-scrollbar-track{
-    background-color: #091327;
+::-webkit-scrollbar-track{
+    background-color: rgba(9, 19, 39, 0.2);
+}
+::-webkit-scrollbar-track:hover{
+    background-color: rgba(9, 19, 39, 1);
 }
 
-.horizontal-scroll::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb{
     background:linear-gradient(to right,#2C3E50,#4CA1AF); 
-    border-radius: 10px;
+    /* border-radius: 5px; */
 }

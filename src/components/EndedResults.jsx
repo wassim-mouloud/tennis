@@ -16,7 +16,7 @@ function Results({firstP, secondP, gm, set1, set2, set3, set4, set5, points, set
     {gm===false?(
         <motion.div    
             whileTap={{cursor:'grabbing'}}
-             className='first:ml-[20px] last:mr-[20px] md:hover:scale-105  transition-all duration-[300ms] relative bg-[#091327] lg:w-[calc(100vw/4)] h-[200px] w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] mb-[20px] justify-center flex-shrink-0 cursor-pointer'>
+             className=' first:ml-[20px]  last:mr-[20px] md:hover:scale-105  transition-all duration-[300ms] relative bg-[#091327] lg:w-[calc(100vw/4)] h-[200px] w-[80vw] flex flex-col gap-4 p-5 rounded-[10px] mt-[20px] mb-[20px] justify-center flex-shrink-0 cursor-pointer'>
             <div className='flex gap-2 ' >
                 <p className='text-[#20BF55] text-[12px]' >{tournament}</p>
                 <p className='text-[#20BF55] text-[12px]' >({type})</p>

@@ -4,6 +4,7 @@ import EndedResults from '../components/EndedResults'
 import FilterMatches from '../components/FilterMatches'
 import { countries } from '../utils/countries'
 import { players } from '../utils/players'
+import '../App.css'
 
 function Ended() {
     const [ended, setEnded]=useState([])
@@ -58,7 +59,7 @@ function Ended() {
     })
     
   return (
-    <div className='' id='ended' >
+    <div className='horizontal-scroll' id='ended' >
         <motion.h2 
          initial={{opacity:0}}
          whileInView={{opacity:1,
